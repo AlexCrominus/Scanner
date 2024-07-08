@@ -1,0 +1,31 @@
+<!-- index.html -->
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>WebSocket Scan</title>
+    </head>
+    <body>
+        <script>
+            const ws = new WebSocket("ws://localhost:8000/ws-scan");
+
+            ws.onopen = function () {
+                console.log("WebSocket connected");
+            };
+
+            ws.onmessage = function (event) {
+                console.log("Message from server:", event.data);
+                // Handle the message (e.g., update UI with scan results)
+            };
+
+            ws.onclose = function (event) {
+                console.log("WebSocket connection closed:", event);
+            };
+
+            ws.onerror = function (error) {
+                console.error("WebSocket error:", error);
+            };
+        </script>
+    </body>
+</html>
